@@ -47,7 +47,6 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
-        sudo add-apt-repository ppa:deadsnakes/ppa
         sudo -E apt-get -qq update
         sudo -E apt-get -qq install $(curl -fsSL https://raw.githubusercontent.com/sukeyisme/openwrt-ci/refs/heads/main/depends-ubuntu-2404)
         sudo -E apt-get -qq autoremove --purge
