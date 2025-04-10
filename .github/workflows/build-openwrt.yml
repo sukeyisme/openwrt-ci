@@ -13,6 +13,11 @@ name: Build OpenWrt
 on:
   repository_dispatch:
   workflow_dispatch:
+    inputs:
+      incremental_compilation:
+        description: 'repository will not clone again and not to be remove'
+        required: true
+        default: 'true'
 
 env:
   REPO_URL: https://github.com/openwrt/openwrt
@@ -51,6 +56,7 @@ jobs:
 
     - name: Clone source code
       working-directory: /workdir
+      if:  github.event.inputs.incremental_compilation == 'false'
       run: |
         df -hT $PWD
         rm -rf /workdir/openwrt
