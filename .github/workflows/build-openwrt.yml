@@ -79,8 +79,7 @@ jobs:
     - name: Update rust
       run: |
         cd openwrt
-        rm -rf feeds/packages/lang/rust
-        git -C feeds/packages checkout master -- lang/rust
+        sed -i 's/llvm.download-ci-llvm=true/llvm.download-ci-llvm=false/' feeds/packages/lang/rust/Makefile
 
     - name: Load custom configuration
       run: |
