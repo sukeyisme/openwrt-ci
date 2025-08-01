@@ -78,6 +78,7 @@ jobs:
 
     - name: Update rust
       run: |
+        cd openwrt
         rm -rf feeds/packages/lang/rust
         git -C feeds/packages checkout master -- lang/rust
 
