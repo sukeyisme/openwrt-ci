@@ -76,6 +76,11 @@ jobs:
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
 
+    - name: Update rust
+      run: |
+        rm -rf feeds/packages/lang/rust
+        git -C feeds/packages checkout master -- lang/rust
+
     - name: Load custom configuration
       run: |
         [ -e files ] && mv files openwrt/files
